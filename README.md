@@ -20,7 +20,10 @@ El nombre de las imagenes debe tener el siguiente formato *EM_{PACIENTE}_{PUNTO 
 
 2. Ejecute el siguiente comando:
 
-<code>docker build -t nnunet . </code>
+<code>docker run --gpus 1 --entrypoint=/bin/sh --rm -v ${PWD}\data\input:/nnUNet/data/nnUNet_raw/nnUNet_raw_data/Task001_EM/imagesTs/ -v ${PWD}\data\output:/nnUNet/data/nnUNet_raw/nnUNet_raw_data/Task001_EM/output/ nnunet process.sh </code>
 
+o el equivalente:
+
+<code>docker-compose up</code>
 
 
