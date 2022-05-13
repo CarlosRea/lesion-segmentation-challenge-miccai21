@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+  nnunet:
+    container_name: nnunet
+    image: nnunet
+    build: .
+    volumes:
+      - .\data\input:/nnUNet/data/nnUNet_raw/nnUNet_raw_data/Task001_EM/imagesTs/
+      - .\data\output:/nnUNet/data/nnUNet_raw/nnUNet_raw_data/Task001_EM/output/
+    command: /bin/sh process.sh
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
